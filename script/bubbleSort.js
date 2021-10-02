@@ -24,6 +24,4 @@ const bubbleSort = async function () {
             listVal[listSize - 1 - i]
         );
     }
-
-    endSorting();
 };

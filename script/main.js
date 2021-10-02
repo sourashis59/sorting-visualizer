@@ -41,16 +41,19 @@ const updateStatusText = function (text) {
     if (text === "Sorting" || text === "sorting" || text === " SORTING") {
         statusTextDiv.innerHTML = "Sorting...";
         statusTextDiv.style.color = "orange";
+        document.getElementById("sedcatImage").classList.add("hidden");
     } else if (text === "reset") {
         statusTextDiv.innerHTML = "N/A";
         statusTextDiv.style.color = "white";
+        document.getElementById("sedcatImage").classList.add("hidden");
     } else if (
         text === "finished" ||
         text == "FINISHED" ||
         text === "Finished"
     ) {
-        statusTextDiv.innerHTML = "Finished !!";
+        statusTextDiv.innerHTML = "Finished :)";
         statusTextDiv.style.color = "rgb(96, 250, 96)";
+        document.getElementById("sedcatImage").classList.remove("hidden");
     }
 };
 
@@ -164,6 +167,8 @@ const sortFun = function (e) {
         // }
 
         // alert("\nsorted :)");
+
+        endSorting();
     }
 
     resetDelayTime();

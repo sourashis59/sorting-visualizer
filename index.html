@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting algorithm visualizer</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+
+    <div class="heading"><p class="heading_text">Sorting Algorithm Visualizer</p></div>
+
+    <div class="container">
+        
+        <div class="algo_sidebar">
+            <div id="home">Home</div>
+            <div id="bubbleSort">Bubble sort</div>
+            <div id="selectionSort">Selection Sort</div>
+            <div id="insertionSort">Insertion Sort</div>
+            <div id="mergeSort">Merge Sort</div>
+            <div id="quickSort">Quick Sort</div>
+            <div id="heapSort">Heap Sort</div>
+        </div>
+        
+
+
+        
+        <div class="container1">
+            
+            <div class="algo_detail">Bubble Sort : Time complexity = O(n^2) , Space Complexity = O(1)</div>
+
+
+            <div class="button_container">
+                
+                <div class=" bttn canBeDisabled" id="sortButton">Sort</div>
+                <div class=" bttn " id="resetButton">Reset</div>
+                <div class="bttn canBeDisabled" id="generateNewListButton">Generate new List</div>
+                <div class="bttn canBeDisabled" id="speedButton">Speed</div>
+                <div class=" bttn canBeDisabled" id="sizeButton" >List Size</div>
+
+            </div>
+
+
+
+
+
+
+
+            <div class="list_bar_container">
+
+                <div class="list_bar_inner_container">
+
+
+
+                </div>
+
+                <div class="timer">
+                    <p>Time</p>
+
+                </div>
+
+            </div> 
+
+
+
+
+
+            <div class="bottom_bar">
+
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script src="script/main.js"></script>
+    <script src="script/visualization.js"></script>
+    <script src="script/bubbleSort.js"></script>
+</body>
+</html>

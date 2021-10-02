@@ -12,8 +12,8 @@
 <body>
 
 
-    <div class="heading"><h3 class="heading_text ">Sorting Algorithm Visualizer</h3></div>
-
+    <div class="heading main-element "><h3 class="heading_text">Sorting Algorithm Visualizer</h3></div>
+    
     <div class="container">
         
         <div class="algo_sidebar">
@@ -48,7 +48,7 @@
                     <div class="generateSubButtonContainer">
                         <button class="generateSubButton bttn canBeDisabled  " id = "generateRandomList">Random List</button>
                         <button class="generateSubButton bttn canBeDisabled" id = "generateCorrectlySortedList">Sorted Correctly</button>
-                        <button class="generateSubButton bttn canBeDisabled" id = "generateWronglySortedList">Sorted Wrong</button>
+                        <button class="generateSubButton bttn canBeDisabled" id = "generateWronglySortedList">Sorted Wrongly</button>
                     </div>
                 </div>
 
@@ -58,7 +58,7 @@
                     
                     <div class="listSizeDiv">
                         <div>Size of list:</div>
-                        <input type="range" class ="canBeDisabled" id="listSize" min=5 max=150 step=1 value=80>
+                        <input type="range" class ="canBeDisabled" id="listSize" min=2 max=200 step=1 value=80>
                     </div>
 
                     <div class="listSizeDiv">
@@ -81,8 +81,14 @@
                 <div class="list_bar_inner_container">
                 </div>
 
-                <div class="timer">
-                    <p>Time</p>
+                <div class="statusTimerContainer">
+                    
+                    <div class="statusContainer">
+                        <p class = "statusHeader">Status : </p>
+                        <p class="statusText">N/A</p>
+                    </div>
+
+                    <p class="hidden">Time</p>
 
                 </div>
 
@@ -119,6 +125,3 @@
 </html>
 
 
-
-<!-- HTML !-->
-<!-- <button class="bttn" role="button">Button 19</button> -->

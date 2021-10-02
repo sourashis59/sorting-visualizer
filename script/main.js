@@ -31,21 +31,43 @@ const sortButton = document.getElementById("sortButton");
 const barContainer = document.querySelector(".list_bar_inner_container");
 const resetButton = document.querySelector("#resetButton");
 const disabledButtons = document.querySelectorAll(".canBeDisabled");
+const statusTextDiv = document.querySelector(".statusText");
+
+let endSortFunTimeOutId = null;
 
 //*funcitons
+
+const updateStatusText = function (text) {
+    if (text === "Sorting" || text === "sorting" || text === " SORTING") {
+        statusTextDiv.innerHTML = "Sorting...";
+        statusTextDiv.style.color = "orange";
+    } else if (text === "reset") {
+        statusTextDiv.innerHTML = "N/A";
+        statusTextDiv.style.color = "white";
+    } else if (
+        text === "finished" ||
+        text == "FINISHED" ||
+        text === "Finished"
+    ) {
+        statusTextDiv.innerHTML = "Finished !!";
+        statusTextDiv.style.color = "rgb(96, 250, 96)";
+    }
+};
 
 const resetDelayTime = function () {
     netDelay = 0;
 };
 
 const resetAll = function () {
+    //Important to ignore bug : First priority is to clear the endSorting timout
+    if (endSortFunTimeOutId) clearTimeout(endSortFunTimeOutId);
+
     for (let i = 0; i < timeOuts.length; i++) {
+        // console.log(timeOuts[i]);
         clearTimeout(timeOuts[i]);
     }
 
     timeOuts = [];
-
-    sortingGoingOn = false;
 
     listVal = [];
     listBarDiv = [];
@@ -53,6 +75,10 @@ const resetAll = function () {
     resetDelayTime();
 
     enableButtonsFun();
+
+    sortingGoingOn = false;
+
+    updateStatusText("reset");
 };
 
 //retuns random integer within range [lowRange, highRange)
@@ -94,7 +120,6 @@ const generateList = function (e) {
                 height: ${listVal[i]}%;
                 width:  ${100 / listSize}%;
 
-
                 `;
     }
 };
@@ -120,6 +145,8 @@ const sortFun = function (e) {
 
     if (!sortingGoingOn) {
         console.log("sorting started ");
+
+        updateStatusText("sorting");
 
         sortingGoingOn = true;
         disableButtonsFun();
@@ -177,10 +204,12 @@ const handleDisabledButtons = function (e) {
 };
 
 const endSorting = function () {
-    setTimeout(function () {
-        sortingGoingOn = false;
+    endSortFunTimeOutId = setTimeout(function () {
         enableButtonsFun();
 
+        updateStatusText("finished");
+
+        sortingGoingOn = false;
         console.log(" sort function finished");
     }, (netDelay += delayTime));
 };

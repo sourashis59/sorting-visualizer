@@ -13,6 +13,7 @@
 // };
 
 const changeBarStyle = function (listBarDiv, newHeight, newColor) {
+    sortingGoingOn = true;
     let id = setTimeout(function () {
         listBarDiv.style.backgroundColor = newColor;
         listBarDiv.style.height = `${newHeight}%`;

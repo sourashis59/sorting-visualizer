@@ -1,10 +1,10 @@
 :root {
     --headingbackgroundcolor: red;
 
-    --barColor: blue;
+    --barColor: rgb(178, 232, 240);
     --barCheckingColor: orange;
     --barMisplacedColor: red;
-    --barCorrectPositionColor: green;
+    --barCorrectPositionColor: rgb(96, 250, 96);
 }
 
 * {
@@ -31,13 +31,13 @@ body {
 }
 
 .heading {
-    background: blue;
-
     height: 9%;
 
     text-align: center;
 
-    background: linear-gradient(to top left, #4cc8ee, #8f1ef8);
+    background: linear-gradient(to top left, #1b5364, #000000);
+
+    border: 4px solid black;
 }
 
 .heading_text {
@@ -69,9 +69,11 @@ body {
 }
 
 .button_container {
-    background: linear-gradient(to top left, #b9eff7, #3ec9ce);
+    background: radial-gradient(#cdec79, #e6bf6d);
     display: flex;
     flex-direction: row;
+
+    border: 4px solid black;
 
     /* flex-wrap: nowrap; */
 }
@@ -153,7 +155,7 @@ body {
     color: #ffffff;
     font-size: 15px;
     padding: 8px 22px 8px 20px;
-    border: solid #1f628d 2px;
+    border: solid hsl(268, 89%, 48%) 4px;
     text-decoration: none;
 }
 
@@ -197,7 +199,7 @@ input {
 }
 
 .list_bar_container {
-    background: linear-gradient(to top left, #f8f8ef, #def188);
+    background: linear-gradient(to top left, #111311, #3c4b42);
     flex: 1;
 
     display: flex;
@@ -220,13 +222,40 @@ input {
     height: 5%;
 }
 
-.timer {
-    background-color: blueviolet;
+.statusTimerContainer {
+    margin-top: 3rem;
+    flex: 1;
     height: 100%;
 
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    color: white;
+}
+.statusContainer {
+    /* background-color: yellow; */
+
+    font-family: sans-serif;
+    height: 20%;
+}
+
+.statusHeader {
+    font-size: 4rem;
+    font-weight: 700;
 }
 
 .hidden {
     display: none;
 }
+
+/*  */
+/* 
+ */
+/*  */
+/* 
+ */
+/*  */
+/* 
+  */
+/* 
+ */

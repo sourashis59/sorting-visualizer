@@ -13,12 +13,12 @@
 // };
 
 const changeBarStyle = function (listBarDiv, newHeight, newColor) {
-    setTimeout(function () {
+    let id = setTimeout(function () {
         listBarDiv.style.backgroundColor = newColor;
         listBarDiv.style.height = `${newHeight}%`;
-    }, netDelay);
+    }, (netDelay += delayTime));
 
-    netDelay += delayTime;
+    timeOuts.push(id);
 };
 
 const barCheckingVisualize = function (listBarDiv, listVal) {

@@ -12,7 +12,7 @@
 <body>
 
 
-    <div class="heading"><p class="heading_text">Sorting Algorithm Visualizer</p></div>
+    <div class="heading"><h3 class="heading_text ">Sorting Algorithm Visualizer</h3></div>
 
     <div class="container">
         
@@ -31,16 +31,42 @@
         
         <div class="container1">
             
-            <div class="algo_detail">Bubble Sort : Time complexity = O(n^2) , Space Complexity = O(1)</div>
+            <div class="algo_detail"><p>Bubble Sort : Time complexity = O(n^2) , Space Complexity = O(1)</p></div>
 
 
             <div class="button_container">
                 
-                <div class=" bttn canBeDisabled" id="sortButton">Sort</div>
-                <div class=" bttn " id="resetButton">Reset</div>
-                <div class="bttn canBeDisabled" id="generateNewListButton">Generate new List</div>
-                <div class="bttn canBeDisabled" id="speedButton">Speed</div>
-                <div class=" bttn canBeDisabled" id="sizeButton" >List Size</div>
+                <div class="buttonDiv">
+                    <button class=" bttn canBeDisabled " id="sortButton">Sort</button>
+                    <button class=" bttn " id="resetButton">Reset</button>
+                </div>
+
+
+                <div class="generateNewListContainer">
+                    <div  id="generateNewListHeading">Generate new list</div>
+                    
+                    <div class="generateSubButtonContainer">
+                        <button class="generateSubButton bttn canBeDisabled  " id = "generateRandomList">Random List</button>
+                        <button class="generateSubButton bttn canBeDisabled" id = "generateCorrectlySortedList">Sorted Correctly</button>
+                        <button class="generateSubButton bttn canBeDisabled" id = "generateWronglySortedList">Sorted Wrong</button>
+                    </div>
+                </div>
+
+
+
+                <div class="inputDiv">
+                    
+                    <div class="listSizeDiv">
+                        <div>Size of list:</div>
+                        <input type="range" class ="canBeDisabled" id="listSize" min=5 max=150 step=1 value=80>
+                    </div>
+
+                    <div class="listSizeDiv">
+                        <p>Speed:</p>
+                        <input type="range" class ="canBeDisabled" id="speed" min=1 max=100 step=1 value=30>
+                    </div>
+
+                </div>
 
             </div>
 
@@ -50,12 +76,9 @@
 
 
 
-            <div class="list_bar_container">
+            <div class="list_bar_container ">
 
                 <div class="list_bar_inner_container">
-
-
-
                 </div>
 
                 <div class="timer">
@@ -94,3 +117,8 @@
     <script src="script/bubbleSort.js"></script>
 </body>
 </html>
+
+
+
+<!-- HTML !-->
+<!-- <button class="bttn" role="button">Button 19</button> -->

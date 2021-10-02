@@ -2,18 +2,31 @@
 
 //*variables declaration
 
-const listSize = 25;
+let listSizeInputElement = document.getElementById("listSize");
+let listSize = Number(listSizeInputElement.value);
+
+let speedInputElement = document.getElementById("speed");
+let speed = Number(speedInputElement.value);
+
 let sortingGoingOn = false;
 
 let listVal = [];
 let listBarDiv = [];
 
+let timeOuts = [];
 let netDelay = 0;
-let delayTime = 100;
+let delayTime = 1000;
 
 const style = getComputedStyle(document.body);
 
-const generateNewListButton = document.getElementById("generateNewListButton");
+const generateRandomListButton = document.getElementById("generateRandomList");
+const generateCorrectlySortedButton = document.getElementById(
+    "generateCorrectlySortedList"
+);
+const generateWronglySortedButton = document.getElementById(
+    "generateWronglySortedList"
+);
+
 const sortButton = document.getElementById("sortButton");
 const barContainer = document.querySelector(".list_bar_inner_container");
 const resetButton = document.querySelector("#resetButton");
@@ -26,12 +39,20 @@ const resetDelayTime = function () {
 };
 
 const resetAll = function () {
+    for (let i = 0; i < timeOuts.length; i++) {
+        clearTimeout(timeOuts[i]);
+    }
+
+    timeOuts = [];
+
     sortingGoingOn = false;
 
     listVal = [];
     listBarDiv = [];
 
     resetDelayTime();
+
+    enableButtonsFun();
 };
 
 //retuns random integer within range [lowRange, highRange)
@@ -40,8 +61,8 @@ const getRandomInt = function (lowRange, highRange) {
     return lowRange + Math.floor(Math.random() * diff);
 };
 
-const generateArrayFun = function () {
-    console.log("generate new list button clicked");
+const generateList = function (e) {
+    console.log("generate new list function called");
 
     resetAll();
 
@@ -49,8 +70,20 @@ const generateArrayFun = function () {
     barContainer.innerHTML = "";
 
     let marginSize = 0.1;
+
+    let sortingType = "generateRandomList";
+
+    if (e) {
+        sortingType = e.target.id;
+    }
+
     for (let i = 0; i < listSize; i++) {
-        listVal[i] = getRandomInt(5, 100);
+        if (sortingType === "generateRandomList")
+            listVal[i] = getRandomInt(5, 100);
+        else if (sortingType === "generateCorrectlySortedList")
+            listVal[i] = ((i + 1) * 100) / listSize;
+        else if (sortingType === "generateWronglySortedList")
+            listVal[i] = ((listSize - i + 1) * 100) / listSize;
 
         listBarDiv[i] = document.createElement("div");
         barContainer.appendChild(listBarDiv[i]);
@@ -60,9 +93,20 @@ const generateArrayFun = function () {
                 margin: ${marginSize}rem;
                 height: ${listVal[i]}%;
                 width:  ${100 / listSize}%;
-                
+
+
                 `;
     }
+};
+
+const updateListSize = function () {
+    listSize = Number(listSizeInputElement.value);
+    generateList();
+};
+
+const updateSpeed = function () {
+    speed = Number(speedInputElement.value);
+    delayTime = 1000 / (speed * speed);
 };
 
 const sortNumArray = function (numArray) {
@@ -78,9 +122,10 @@ const sortFun = function (e) {
         console.log("sorting started ");
 
         sortingGoingOn = true;
+        disableButtonsFun();
 
-        let newSortedList = [...listVal];
-        sortNumArray(newSortedList);
+        // let newSortedList = [...listVal];
+        // sortNumArray(newSortedList);
 
         bubbleSort();
 
@@ -97,26 +142,66 @@ const sortFun = function (e) {
     resetDelayTime();
 };
 
+const handleGenerateList = function (e) {
+    if (!e.target.classList.contains("disabledButton") && !sortingGoingOn)
+        generateList(e);
+};
+
 const handleReset = function () {
     resetAll();
-    generateArrayFun();
+    generateList();
+};
+
+const disableButtonsFun = function () {
+    for (let i = 0; i < disabledButtons.length; i++) {
+        disabledButtons[i].disabled = true;
+        disabledButtons[i].classList.add("disabledButton");
+    }
+};
+
+const enableButtonsFun = function () {
+    for (let i = 0; i < disabledButtons.length; i++) {
+        disabledButtons[i].disabled = false;
+        disabledButtons[i].classList.remove("disabledButton");
+    }
 };
 
 const handleDisabledButtons = function (e) {
     console.log("disabled button hovered");
     console.log("sortingGoingOn : " + sortingGoingOn);
-    if (sortingGoingOn) {
+    if (sortingGoingOn || e.target.classList.contains("disabledButton")) {
         e.target.style.cursor = "not-allowed";
+    } else {
+        e.target.style.cursor = "pointer";
     }
 };
 
+const endSorting = function () {
+    setTimeout(function () {
+        sortingGoingOn = false;
+        enableButtonsFun();
+
+        console.log(" sort function finished");
+    }, (netDelay += delayTime));
+};
+
 //*event listeners
+
+listSizeInputElement.addEventListener("input", updateListSize);
+speedInputElement.addEventListener("input", updateSpeed);
+
 sortButton.addEventListener("click", sortFun);
-generateNewListButton.addEventListener("click", generateArrayFun);
+generateRandomListButton.addEventListener("click", handleGenerateList);
+generateCorrectlySortedButton.addEventListener("click", handleGenerateList);
+generateWronglySortedButton.addEventListener("click", handleGenerateList);
+
 resetButton.addEventListener("click", handleReset);
 
-for (let i = 0; i < disabledButtons.length; i++) {
-    disabledButtons[i].addEventListener("mouseover", handleDisabledButtons);
-}
+// for (let i = 0; i < disabledButtons.length; i++) {
+//     disabledButtons[i].addEventListener("mouseover", handleDisabledButtons);
+// }
 
-generateArrayFun();
+updateListSize();
+updateSpeed();
+generateList();
+// disableButtonsFun();

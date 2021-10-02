@@ -25,5 +25,5 @@ const bubbleSort = async function () {
         );
     }
 
-    console.log("bubble sort function finished");
+    endSorting();
 };

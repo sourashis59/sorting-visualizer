@@ -17,8 +17,11 @@ let timeOuts = [];
 let netDelay = 0;
 let delayTime = 1000;
 
+let selectedAlgo = "bubbleSort";
+
 const style = getComputedStyle(document.body);
 
+const algoMenuDivs = document.getElementsByClassName("algoMenu");
 const generateRandomListButton = document.getElementById("generateRandomList");
 const generateCorrectlySortedButton = document.getElementById(
     "generateCorrectlySortedList"
@@ -43,7 +46,7 @@ const updateStatusText = function (text) {
         statusTextDiv.style.color = "orange";
         document.getElementById("sedcatImage").classList.add("hidden");
     } else if (text === "reset") {
-        statusTextDiv.innerHTML = "N/A";
+        statusTextDiv.innerHTML = "Chilling";
         statusTextDiv.style.color = "white";
         document.getElementById("sedcatImage").classList.add("hidden");
     } else if (
@@ -157,7 +160,31 @@ const sortFun = function (e) {
         // let newSortedList = [...listVal];
         // sortNumArray(newSortedList);
 
-        bubbleSort();
+        switch (selectedAlgo) {
+            case "bubbleSort":
+                bubbleSort();
+                break;
+            case "selectionSort":
+                selectionSort();
+                break;
+            case "insertionSort":
+                insertionSort();
+                break;
+            case "mergeSort":
+                mergeSort();
+                break;
+            case "quickSort":
+                quickSort();
+                break;
+            case "heapSort":
+                heapSort();
+                break;
+
+            default:
+                alert("Algorithm not found :(");
+
+            // code block
+        }
 
         // for (let i = 0; i < listSize; i++) {
         //     if (newSortedList[i] != listVal[i]) {
@@ -219,10 +246,27 @@ const endSorting = function () {
     }, (netDelay += delayTime));
 };
 
+const handleAlgoMenuClick = function (e) {
+    if (!sortingGoingOn) {
+        selectedAlgo = e.target.id;
+        console.log(selectedAlgo + "button clicked");
+
+        for (let i = 0; i < algoMenuDivs.length; i++) {
+            algoMenuDivs[i].classList.remove("selectedAlgoMenu");
+        }
+
+        e.target.classList.add("selectedAlgoMenu");
+    }
+};
+
 //*event listeners
 
 listSizeInputElement.addEventListener("input", updateListSize);
 speedInputElement.addEventListener("input", updateSpeed);
+
+for (let i = 0; i < algoMenuDivs.length; i++) {
+    algoMenuDivs[i].addEventListener("click", handleAlgoMenuClick);
+}
 
 sortButton.addEventListener("click", sortFun);
 generateRandomListButton.addEventListener("click", handleGenerateList);
@@ -238,4 +282,3 @@ resetButton.addEventListener("click", handleReset);
 updateListSize();
 updateSpeed();
 generateList();
-// disableButtonsFun();

@@ -152,6 +152,10 @@ const sortFun = function (e) {
     if (!sortingGoingOn) {
         console.log("sorting started ");
 
+        //make the bar color normal , if it was previously sorted and kept in sorted color
+        for (let i = 0; i < listBarDiv.length; i++)
+            barNormalVisualize(listBarDiv[i], listVal[i], false);
+
         updateStatusText("sorting");
 
         sortingGoingOn = true;
@@ -182,8 +186,6 @@ const sortFun = function (e) {
 
             default:
                 alert("Algorithm not found :(");
-
-            // code block
         }
 
         // for (let i = 0; i < listSize; i++) {

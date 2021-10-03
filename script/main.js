@@ -35,6 +35,7 @@ const barContainer = document.querySelector(".list_bar_inner_container");
 const resetButton = document.querySelector("#resetButton");
 const disabledButtons = document.querySelectorAll(".canBeDisabled");
 const statusTextDiv = document.querySelector(".statusText");
+const algoDetailTextDiv = document.querySelector(".algo_detail>p");
 
 let endSortFunTimeOutId = null;
 
@@ -101,7 +102,7 @@ const generateList = function (e) {
     //reset the inner Html , i.e, remove the already present bars
     barContainer.innerHTML = "";
 
-    let marginSize = 0.1;
+    let marginSize = 0.05;
 
     let sortingType = "generateRandomList";
 
@@ -259,6 +260,43 @@ const handleAlgoMenuClick = function (e) {
         }
 
         e.target.classList.add("selectedAlgoMenu");
+
+        switch (selectedAlgo) {
+            case "bubbleSort":
+                algoDetailTextDiv.innerHTML =
+                    "Bubble Sort : Time = O(n<sup>2</sup>) , Space = O(1) ";
+                break;
+
+            case "selectionSort":
+                algoDetailTextDiv.innerHTML =
+                    "Selection Sort : Time = O(n<sup>2</sup>) , Space = O(1) ";
+                break;
+
+            case "insertionSort":
+                algoDetailTextDiv.innerHTML =
+                    "Insertion Sort : Time = O(n<sup>2</sup>) , Space = O(1) ";
+                break;
+
+            case "mergeSort":
+                algoDetailTextDiv.innerHTML =
+                    "Merge Sort : Time = O(n*log(n)) , Space = O(n) ";
+                break;
+
+            case "quickSort":
+                algoDetailTextDiv.innerHTML =
+                    "Quick Sort : Time = O(n<sup>2</sup>) , Space = O(1) ";
+                break;
+
+            case "heapSort":
+                algoDetailTextDiv.innerHTML =
+                    "Heap Sort : Time = O(n*log(n)) , Space = O(1) ";
+                break;
+
+            default:
+                algoDetailTextDiv.innerHTML =
+                    "Algorithm not found :)  : Time = O(-1) , Space = O(-1) ";
+                break;
+        }
     }
 };
 

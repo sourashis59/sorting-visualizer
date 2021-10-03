@@ -188,6 +188,7 @@ const sortFun = function (e) {
 
         // for (let i = 0; i < listSize; i++) {
         //     if (newSortedList[i] != listVal[i]) {
+        //         console.log(newSortedList[i] + ", ");
         //         alert("Not sorted!!!!!!!!!!!!!!!!!!!!!!");
         //         return;
         //     }

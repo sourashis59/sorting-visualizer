@@ -1,6 +1,6 @@
 "use strict";
 
-const bubbleSort = async function () {
+const bubbleSort = function () {
     console.log("bubble sort function called");
 
     for (let i = 0; i < listSize; i++) {

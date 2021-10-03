@@ -22,25 +22,52 @@ const changeBarStyle = function (listBarDiv, newHeight, newColor) {
     timeOuts.push(id);
 };
 
-const barCheckingVisualize = function (listBarDiv, listVal) {
+const changeBarStyleWithoutDealy = function (listBarDiv, newHeight, newColor) {
+    sortingGoingOn = true;
+    let id = setTimeout(function () {
+        listBarDiv.style.backgroundColor = newColor;
+        listBarDiv.style.height = `${newHeight}%`;
+    }, netDelay);
+
+    timeOuts.push(id);
+};
+
+// pass false as 3rd argument if you want no delay in the visual change
+const barCheckingVisualize = function (listBarDiv, listVal, withDelay = true) {
     const barCheckingColor = style.getPropertyValue("--barCheckingColor");
 
-    changeBarStyle(listBarDiv, listVal, barCheckingColor);
+    if (withDelay) changeBarStyle(listBarDiv, listVal, barCheckingColor);
+    else changeBarStyleWithoutDealy(listBarDiv, listVal, barCheckingColor);
 };
 
-const barMisplacedVisualize = function (listBarDiv, listVal) {
+const barMisplacedVisualize = function (listBarDiv, listVal, withDelay = true) {
     const barMisplacedColor = style.getPropertyValue("--barMisplacedColor");
-    changeBarStyle(listBarDiv, listVal, barMisplacedColor);
+
+    if (withDelay) changeBarStyle(listBarDiv, listVal, barMisplacedColor);
+    else changeBarStyleWithoutDealy(listBarDiv, listVal, barMisplacedColor);
 };
 
-const barNormalVisualize = function (listBarDiv, listVal) {
+const barNormalVisualize = function (listBarDiv, listVal, withDelay = true) {
     const barNormalColor = style.getPropertyValue("--barColor");
-    changeBarStyle(listBarDiv, listVal, barNormalColor);
+
+    if (withDelay) changeBarStyle(listBarDiv, listVal, barNormalColor);
+    else changeBarStyleWithoutDealy(listBarDiv, listVal, barNormalColor);
 };
 
-const barCorrectPositionVisualize = function (listBarDiv, listVal) {
+const barCorrectPositionVisualize = function (
+    listBarDiv,
+    listVal,
+    withDelay = true
+) {
     const barCorrectPositionColor = style.getPropertyValue(
         "--barCorrectPositionColor"
     );
-    changeBarStyle(listBarDiv, listVal, barCorrectPositionColor);
+
+    if (withDelay) changeBarStyle(listBarDiv, listVal, barCorrectPositionColor);
+    else
+        changeBarStyleWithoutDealy(
+            listBarDiv,
+            listVal,
+            barCorrectPositionColor
+        );
 };

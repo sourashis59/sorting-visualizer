@@ -351,3 +351,87 @@ input {
 .algo_sidebar a {
     text-decoration: none;
 }
+
+.bottom_bar {
+    display: flex;
+    background-color: black;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 400;
+}
+
+.linkContainer {
+    width: 30%;
+
+    display: flex;
+    flex-direction: row;
+    margin-left: 5rem;
+    align-items: center;
+}
+
+.socialMediaContainer {
+    flex: 1;
+}
+
+#githubLink {
+    border-radius: 45%;
+    background-color: white;
+
+    padding: 0.5rem 2rem;
+    font-size: 1.9rem;
+
+    /* -webkit-border-radius: 60;
+    -moz-border-radius: 60; */
+    border-radius: 5rem;
+}
+
+.socialMediaContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.socialMediaIcon {
+    background-color: white;
+    margin-right: 3rem;
+    border: 1.5px solid orange;
+
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 1.6rem;
+    padding: 0.5rem 2rem;
+    border-radius: 5rem;
+
+    background: linear-gradient(70deg, #bde2ee, white);
+}
+
+a {
+    text-decoration: none;
+}
+
+.levitating:hover {
+    transition: 300ms transform;
+
+    transform: translateY(-0.6rem);
+}
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+
+/*  */
+/*  */
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */

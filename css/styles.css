@@ -71,7 +71,7 @@ body {
 }
 
 .button_container {
-    background: radial-gradient(#cdec79, #e6bf6d);
+    background: linear-gradient(0deg, #f7ffe1, #b8d1f1);
     display: flex;
     flex-direction: row;
 
@@ -191,8 +191,9 @@ input {
     background: red;
 }
 .algo_detail {
-    background-color: lightgreen;
+    background-color: rgb(209, 228, 231);
     height: 10%;
+    text-align: center;
 }
 
 .algo_detail > p {

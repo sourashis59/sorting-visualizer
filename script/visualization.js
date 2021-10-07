@@ -71,3 +71,8 @@ const barCorrectPositionVisualize = function (
             barCorrectPositionColor
         );
 };
+
+const barHideVisualize = function (listBarDiv, listVal, withDelay = true) {
+    if (withDelay) changeBarStyle(listBarDiv, listVal, "transparent");
+    else changeBarStyleWithoutDealy(listBarDiv, listVal, "transparent");
+};
